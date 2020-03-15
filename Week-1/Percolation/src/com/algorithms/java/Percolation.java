@@ -23,11 +23,13 @@ public class Percolation {
         connectVirtualSites(); // connect virtual sites to union-find data structure(s)
     }
 
-    // opens the site (row, col) if it is not open already
-    // increment openSites by one
-    // check if any of its neighbors (left, right, up, down) are open
-    // if so, connect the site corresponding to (row, col) with the site corresponding to that neighbor
-    // make connection using `union` from WeightedQuickUnionUF package
+    /*
+        - opens the site (row, col) if it is not open already
+        - increment openSites by one
+        - check if any of its neighbors (left, right, up, down) are open
+        - if so, connect the site corresponding to (row, col) with the site corresponding to that neighbor
+        - make connection using `union` from WeightedQuickUnionUF package
+    */
     public void open(int row, int col) {
         validateIndex(row, col);
 
