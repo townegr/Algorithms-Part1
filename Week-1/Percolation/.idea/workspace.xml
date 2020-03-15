@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e2f31021-c25a-4278-94ee-e325e5b3567c" name="Default Changelist" comment="" />
+    <list default="true" id="e2f31021-c25a-4278-94ee-e325e5b3567c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Percolation/com/algorithms/java/Percolation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Percolation/com/algorithms/java/Percolation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/algorithms/java/Percolation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/algorithms/java/Percolation.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1Z3e04nrT6uLRFAXk2RipdJtsNO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -62,22 +67,22 @@
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
     <state x="577" y="327" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1584072513782" />
-    <state width="1638" height="280" key="GridCell.Tab.0.bottom" timestamp="1584230847247">
+    <state width="1638" height="280" key="GridCell.Tab.0.bottom" timestamp="1584255730538">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1584230847247" />
-    <state width="1638" height="280" key="GridCell.Tab.0.center" timestamp="1584230847246">
+    <state width="1638" height="280" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1584255730538" />
+    <state width="1638" height="280" key="GridCell.Tab.0.center" timestamp="1584255730538">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1584230847246" />
-    <state width="1638" height="280" key="GridCell.Tab.0.left" timestamp="1584230847245">
+    <state width="1638" height="280" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1584255730538" />
+    <state width="1638" height="280" key="GridCell.Tab.0.left" timestamp="1584255730537">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1584230847245" />
-    <state width="1638" height="280" key="GridCell.Tab.0.right" timestamp="1584230847246">
+    <state width="1638" height="280" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1584255730537" />
+    <state width="1638" height="280" key="GridCell.Tab.0.right" timestamp="1584255730538">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
-    <state width="1638" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1584230847246" />
+    <state width="1638" height="280" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1584255730538" />
     <state x="328" y="118" key="SettingsEditor" timestamp="1584074773318">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>

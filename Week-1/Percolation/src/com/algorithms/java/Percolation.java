@@ -1,14 +1,8 @@
 package com.algorithms.java;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import edu.princeton.cs.algs4.StdRandom;
-import edu.princeton.cs.algs4.StdStats;
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 
 public class Percolation {
-
-    // creates n-by-n grid, with all sites initially blocked
     private int openSites;
     private int gridSize;
     private int source = 0;
@@ -17,10 +11,12 @@ public class Percolation {
     private final WeightedQuickUnionUF uf;
     private final WeightedQuickUnionUF uf2;
 
+    // creates n-by-n grid, with all sites initially blocked
     public Percolation(int n) {
         validateArg(n);
         openSites = 0;
         gridSize = n;
+        sink = (n * n + 1);
         grid = new boolean[n][n]; // n-by-n grid with `false` default values
         uf = new WeightedQuickUnionUF(n * n + 2); // includes `source` and `sink`
         uf2 = new WeightedQuickUnionUF(n * n + 1); // includes `source` only
@@ -36,27 +32,24 @@ public class Percolation {
         validateIndex(row, col);
 
         if (!isOpen(row, col)) {
+            int site = encode(row, col);
             grid[row][col] = true;
 
             // check neighbor above
             if ((row - 1 >= 0) && isOpen(row - 1, col)) {
-                uf.union(encode(row, col), encode(row - 1, col));
-                uf2.union(encode(row, col), encode(row - 1, col));
+                connectNeighbor(site, encode(row - 1, col));
             }
             // check neighbor below
             if ((row + 1 < gridSize) && isOpen(row + 1, col)) {
-                uf.union(encode(row, col), encode(row + 1, col));
-                uf2.union(encode(row, col), encode(row + 1, col));
+                connectNeighbor(site, encode(row + 1, col));
             }
             // check neighbor left
             if ((col - 1 >= 0) && isOpen(row, col - 1)) {
-                uf.union(encode(row, col), encode(row, col - 1));
-                uf2.union(encode(row, col), encode(row, col - 1));
+                connectNeighbor(site, encode(row, col - 1));
             }
             // check neighbor right
             if ((col + 1 < gridSize) && isOpen(row, col + 1)) {
-                uf.union(encode(row, col), encode(row, col + 1));
-                uf2.union(encode(row, col), encode(row, col + 1));
+                connectNeighbor(site, encode(row, col + 1));
             }
             openSites++;
         }
@@ -77,25 +70,34 @@ public class Percolation {
         return openSites;
     }
 
-//    // does the system percolate?
+    // does the system percolate?
     public boolean percolates() {
         return uf.find(source) == uf.find(sink);
     }
 
-    // test client (optional)
+    // test client
     public static void main(String[] args) {
         Percolation p = new Percolation(3);
-        int i = p.encode(1,2);
-        System.out.println(i);
+        p.open(0, 1);
+        p.open(1, 1);
+        p.open(1, 2);
+        p.open(2, 2);
+        System.out.println(p.percolates());
     }
 
     // ensure `source` and `sink` are connected to sites in top and bottom rows, respectively
     private void connectVirtualSites() {
         for (int col = 0; col < gridSize; col++) {
-            uf.union(encode(0, col), source);
-            uf.union(encode(gridSize - 1, col), sink);
-            uf2.union(encode(0, col), source);
+            uf.union(source, encode(0, col));
+            uf.union(sink, encode(gridSize - 1, col));
+            uf2.union(source, encode(0, col));
         }
+    }
+
+    // `union` site to neighbor
+    private void connectNeighbor(int p, int q) {
+        uf.union(p, q);
+        uf2.union(p, q);
     }
 
     private boolean isConnected(int p, int q) {
