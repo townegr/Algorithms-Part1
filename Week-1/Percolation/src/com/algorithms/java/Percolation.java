@@ -57,11 +57,13 @@ public class Percolation {
 
     // is the site (row, col) open?
     public boolean isOpen(int row, int col) {
+        validateIndex(row, col);
         return grid[row][col];
     }
 
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
+        validateIndex(row, col);
         return isConnected(encode(row, col), source);
     }
 
@@ -75,7 +77,13 @@ public class Percolation {
         return uf.find(source) == uf.find(sink);
     }
 
-    // test client
+    /* test client
+        [
+            [[0,0],[0,1],[1,1]],
+            [[1,0],[1,1],[1,2]],
+            [[2,0],[2,1],[2,2]]
+        ]
+    */
     public static void main(String[] args) {
         Percolation p = new Percolation(3);
         p.open(0, 1);
@@ -115,7 +123,7 @@ public class Percolation {
     }
 
     private void validateIndex(int row, int col) {
-        if (row < 0 || row > gridSize || col < 0 || col > gridSize) {
+        if (row < 0 || row > gridSize - 1 || col < 0 || col > gridSize - 1) {
             throw new IndexOutOfBoundsException("Index does not exist");
         }
     }
