@@ -1,6 +1,7 @@
-package com.algorithms.java;
+package com.algorithms;
 
 import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+import java.util.Scanner;
 
 public class Percolation {
     private int openSites;
@@ -79,7 +80,7 @@ public class Percolation {
         return uf.find(source) == uf.find(sink);
     }
 
-    /* test client
+    /* test client with 3x3 grid
         [
             [[0,0],[0,1],[1,1]],
             [[1,0],[1,1],[1,2]],
@@ -87,12 +88,39 @@ public class Percolation {
         ]
     */
     public static void main(String[] args) {
-        Percolation p = new Percolation(3);
-        p.open(0, 1);
-        p.open(1, 1);
-        p.open(1, 2);
-        p.open(2, 2);
-        System.out.println(p.percolates());
+        int gridSize, row, col, openSites;
+
+        System.out.print("Enter size of N-by-N grid: ");
+        Scanner scanner = new Scanner(System.in);
+        gridSize = scanner.nextInt();
+        Percolation p = new Percolation(gridSize);
+        System.out.print("Enter the row and column of a site to open: ");
+
+        while(scanner.hasNextInt()) {
+            row = scanner.nextInt();
+            col = scanner.nextInt();
+            p.open(row, col);
+            openSites = p.numberOfOpenSites();
+            String pluralize = (openSites == 1) ? " site" : " sites";
+
+            System.out.println("Opened: (" + row + ", " + col + ")");
+            System.out.println(openSites + pluralize + " open");
+
+            if (p.percolates()) {
+                System.out.println("Yes! System percolates.");
+                System.exit(0);
+            } else {
+                System.out.println("Try another. System is not percolating.");
+            }
+
+            try {
+                Thread.sleep(1000);
+                System.out.println("==========");
+                System.out.print("Enter the row and column of a site to open: ");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     // ensure `source` and `sink` are connected to sites in top and bottom rows, respectively
