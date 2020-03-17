@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class Percolation {
     private int openSites;
-    private int gridSize;
-    private int source = 0;
-    private int sink;
+    private final int gridSize;
+    private final int source;
+    private final int sink;
     private boolean[][] grid;
     private final WeightedQuickUnionUF uf;
     private final WeightedQuickUnionUF uf2;
@@ -17,6 +17,7 @@ public class Percolation {
         validateArg(n);
         openSites = 0;
         gridSize = n;
+        source = 0;
         sink = (n * n + 1);
         grid = new boolean[n][n]; // n-by-n grid with `false` default values
         uf = new WeightedQuickUnionUF(n * n + 2); // includes `source` and `sink`
@@ -67,7 +68,7 @@ public class Percolation {
     // is the site (row, col) full?
     public boolean isFull(int row, int col) {
         validateIndex(row, col);
-        return isConnected(encode(row, col), source);
+        return isOpen(row, col) && isConnected(encode(row, col), source);
     }
 
     // returns the number of open sites
@@ -77,7 +78,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        return uf.find(source) == uf.find(sink);
+        return uf.find(source) == uf.find(sink) && numberOfOpenSites() > 0;
     }
 
     /* test client with 3x3 grid
@@ -154,7 +155,7 @@ public class Percolation {
 
     private void validateIndex(int row, int col) {
         if (row < 0 || row > gridSize - 1 || col < 0 || col > gridSize - 1) {
-            throw new IndexOutOfBoundsException("Index does not exist");
+            throw new IllegalArgumentException("Index must be between 1 and " + gridSize);
         }
     }
 }
